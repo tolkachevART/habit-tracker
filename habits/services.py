@@ -5,6 +5,9 @@ from config import settings
 
 
 def send_telegram_message(chat_id, message):
+    """
+       Отправляет сообщение в Telegram.
+    """
     params = {
         "text": message,
         "chat_id": chat_id

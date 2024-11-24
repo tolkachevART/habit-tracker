@@ -5,6 +5,10 @@ from users.models import User
 
 
 class Habit(models.Model):
+    """
+    Модель представляет собой привычку пользователя.
+    Содержит информацию о владельце, времени, месте, частоте выполнения и других характеристиках привычки.
+    """
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, verbose_name="Пользователь"
     )

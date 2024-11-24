@@ -8,14 +8,24 @@ from users.permissions import IsOwner
 
 
 class HabitViewSet(ModelViewSet):
+    """
+    ViewSet для управления моделями Habit.
+    Реализует CRUD-функционал для создания, получения, обновления и удаления привычек.
+    """
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     pagination_class = HabitPagination
 
     def perform_create(self, serializer):
+        """
+        Создает новую запись в базе данных.
+        """
         serializer.save(owner=self.request.user)
 
     def get_permissions(self):
+        """
+        Устанавливает права доступа в зависимости от действия.
+        """
         if self.action == "create":
             self.permission_classes = (IsAuthenticated,)
         elif self.action in ["update", "destroy"]:
@@ -27,6 +37,9 @@ class HabitViewSet(ModelViewSet):
         return super().get_permissions()
 
     def get_queryset(self):
+        """
+        Получает список привыечек, доступных для просмотра текущему пользователю.
+        """
         if self.action == "list":
             return Habit.objects.filter(is_public=True) | Habit.objects.filter(
                 owner=self.request.user
