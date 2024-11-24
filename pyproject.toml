@@ -21,6 +21,8 @@ pytz = "^2024.2"
 requests = "^2.32.3"
 eventlet = "^0.38.0"
 telebot = "^0.0.5"
+drf-yasg = "^1.21.8"
+django-cors-headers = "^4.6.0"
 
 
 [build-system]
