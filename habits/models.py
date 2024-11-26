@@ -19,6 +19,7 @@ class Habit(models.Model):
     time = models.TimeField(verbose_name="Время выполнения привычки")
     action = models.CharField(max_length=100, verbose_name="Активность")
     estimated_time = models.IntegerField(verbose_name="Время потраченное на выполнение (в секундах)")
+    last_performed = models.DateField(null=True, blank=True, verbose_name='Дата последнего выполнения')
     periodicity = models.BooleanField(default=False, choices=PERIOD_CHOICES, verbose_name='Периодичность')
     nice_habit = models.BooleanField(default=True, verbose_name="Приятная привычка")
     is_public = models.BooleanField(default=False, verbose_name="Опубликована")
