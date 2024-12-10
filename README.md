@@ -40,3 +40,9 @@ celery -A config worker -l INFO -P eventlet
 Запустите Celery beat для планирования задач:
 ````
 celery -A config beat -l info -S django
+````
+### Docker
+Для запуска файла в Docker:
+````
+docker-compose up -d --build
+````
